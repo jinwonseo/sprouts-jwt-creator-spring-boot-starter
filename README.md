@@ -9,7 +9,7 @@ Java JWT creator Bean이 포함된 spring boot starter입니다.
     <dependency>
         <groupId>kr.sprouts.autoconfigure</groupId>
         <artifactId>sprouts-jwt-creator-spring-boot-starter</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </dependency>
 </dependencies>
 ```
