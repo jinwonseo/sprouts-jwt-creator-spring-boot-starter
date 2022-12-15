@@ -122,12 +122,9 @@ class JwtCreatorTest {
         PrivateKey privateKey = JwtHelper.keyPairFor(SignatureAlgorithm.RS256).getPrivate();
         String claimsJws = JwtCreator.create(claims, privateKey, SignatureAlgorithm.RS256);
 
-        try {
+        assertThatThrownBy(() -> {
             Thread.sleep(validityInSeconds * 2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        assertThatThrownBy(() -> JwtCreatorTest.parse(privateKey, claimsJws)).isInstanceOf(ExpiredJwtException.class);
+            JwtCreatorTest.parse(privateKey, claimsJws);
+        }).isInstanceOf(ExpiredJwtException.class);
     }
 }
